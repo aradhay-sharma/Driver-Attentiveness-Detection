@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Driver Attentiveness Detection</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel = "icon" href = "../static/assets/logo.png" type = "image/x-icon"> 
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		body, html{
+		  height:100%;
+		  margin:0;
+		  font-size:16px;
+		  font-family:"Helvetica", sans-serif;
+		  font-weight:400;
+		  line-height:1.8em;
+		  color:rgb(80, 80, 80);
+		}
+
+		.pimg1{
+		  position:relative;
+		  opacity:1;
+		  background-position:center;
+		  background-size:cover;
+		  background-repeat:no-repeat;
+
+		  /*
+		    fixed = parallax
+		    scroll = normal
+		  */
+		  background-attachment:fixed;
+		}
+
+		.pimg1{
+		  background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url("../static/assets/home.gif");
+		  background-repeat: no-repeat;
+		  min-height:100%;
+		  background-size: cover; 
+		}
+
+		
+
+		.section{
+		  text-align:center;
+		  padding:50px 80px;
+		}
+
+		.section-dark{
+		  background-image: linear-gradient(0deg,rgb(19, 29, 41),rgb(37, 95, 110));
+		  color:#ddd;
+		}
+
+		@keyframes animate {
+		  0% {
+		    transform: translate(-50%, -75%) rotate(0deg);
+		  }
+		  100% {
+		    transform: translate(-50%, -75%) rotate(360deg);
+		  }
+		}
+			.container1 {
+			 position: absolute;
+			 -webkit-transform: translate(-50%, -50%);
+			 -ms-transform: translate(-50%, -50%);
+			 transform: translate(-50%, -50%);
+			 left: 50%;
+			 top: 50%;
+			 font-family: 'Helvetica', sans-serif;
+		}
+		 .title {
+			 font-weight: 800;
+			 color: transparent;
+			 font-size: 55px;
+			 background: url("../static/assets/home.gif") repeat;
+			 background-position: 40% 50%;
+			 -webkit-background-clip: text;
+			 position: relative;
+			 text-align: center;
+			 line-height: 90px;
+			 letter-spacing: 0.5px;
+		}
+		 .subtitle {
+			 display: block;
+			 text-align: center;
+			 text-transform: uppercase;
+			 padding-top: 10px;
+			 color:rgba(28, 54, 79,.9);
+		}
+
+
+		.neon {
+		  position: relative;
+		  text-shadow: 0 0 2rem rgba(red, 0.2);
+
+		  &::before,
+		  &::after {
+		    /*Add two copies of the text on their own layer*/
+		    content: attr(data-text);
+		    
+		    color: red;
+		    
+		    /*And blur them to create the neon effect with the blend-mode below*/
+		    filter: blur(0.01em);
+		    
+		    position: absolute;
+		    top: 0; left: 0;
+		    pointer-events: none;
+		  }
+		  
+		  /* Set the top copy to difference. This creates the knock-out effect with a bit of glow*/
+		  &::after {
+		    mix-blend-mode: difference;
+		  }
+		}
+
+		/*=== Pen styling, ignore*/
+
+		.text-effect { 
+		  flex: 0 1 0;
+		  text-align: center;
+		}
+
+		/* Style text*/
+		.neon {
+		  display: inline-block;
+		  font: 300 50px/1 Helvetica;
+		  margin: 0;
+		  
+		  &:focus { outline: none; border: 1px dotted white; }
+		}
+		.text-style{
+		transition: 4s ease-in-out;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+
+		a:link {
+		  background-color: rgba(0, 75, 0, 0.7);
+		}
+
+
+
+	/* Box */
+
+	.box {
+		background: #ffffff;
+		color: #ffffff;
+		padding: 5em;
+	}
+
+		.box > :last-child {
+			margin-bottom: 0;
+		}
+
+		.box.style2 {
+			padding: 5em 5em 5em 5em;
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.box {
+				padding: 5em;
+			}
+
+				.box.style2 {
+					padding: 5em 5em 5em 5em;
+					background-color: rgba(255, 255, 255, 0.9);
+				}
+
+		}
+
+		
+/* Image */
+
+	.image {
+		position: relative;
+		display: inline-block;
+	}
+
+		.image:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: url("images/overlay.png");
+		}
+
+		.image img {
+			display: block;
+			width: 100%;
+		}
+
+		.image.featured {
+			display: block;
+			width: 100%;
+			margin: 0 0 2em 0;
+		}
+
+		.image.fit {
+			display: block;
+			width: 100%;
+		}
+
+		.image.left {
+			float: left;
+			margin: 0 2em 2em 0;
+		}
+
+		.image.centered {
+			display: block;
+			margin: 0 0 2em 0;
+		}
+
+			.image.centered img {
+				margin: 0 auto;
+				width: auto;
+			}
+
+
+
+/* Main */
+
+	.main {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		position: relative;
+		margin: 0;
+		overflow-x: hidden;
+	}
+
+		.main > .content {
+			width: 45em;
+			max-width: calc(100% - 4em);
+			margin: 0 auto;
+		}
+
+			.main > .content > :last-child {
+				margin-bottom: 0;
+			}
+
+		.main.fullscreen {
+			min-height: 100%;
+		}
+
+		.main.style1 {
+			-moz-align-items: center;
+			-webkit-align-items: center;
+			-ms-align-items: center;
+			align-items: center;
+			-moz-justify-content: center;
+			-webkit-justify-content: center;
+			-ms-justify-content: center;
+			justify-content: center;
+			text-align: center;
+			padding: 3em 0 3em 0;
+		}
+
+			.main.style1 h2 {
+				font-size: 4.25em;
+				line-height: 1em;
+			}
+
+			.main.style1 > .content {
+				-moz-transition: opacity 1s ease;
+				-webkit-transition: opacity 1s ease;
+				-ms-transition: opacity 1s ease;
+				transition: opacity 1s ease;
+				-moz-transform: translateZ(0);
+				-webkit-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				transform: translateZ(0);
+				opacity: 1.0;
+				margin: 0;
+			}
+
+			.main.style1.inactive > .content {
+				opacity: 0;
+			}
+
+		.main.style2 {
+			-moz-align-items: center;
+			-webkit-align-items: center;
+			-ms-align-items: center;
+			align-items: center;
+			-moz-justify-content: center;
+			-webkit-justify-content: center;
+			-ms-justify-content: center;
+			justify-content: center;
+			padding: 3em 0 3em 0;
+			overflow: hidden;
+		}
+
+			.main.style2 > .content {
+				-moz-transition: -moz-transform 1s ease;
+				-webkit-transition: -webkit-transform 1s ease;
+				-ms-transition: -ms-transform 1s ease;
+				transition: transform 1s ease;
+				-moz-transform: translateZ(0);
+				-webkit-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				transform: translateZ(0);
+				position: relative;
+				width: 35%;
+				margin: 0;
+			}
+
+			.main.style2.left {
+				-moz-justify-content: -moz-flex-start;
+				-webkit-justify-content: -webkit-flex-start;
+				-ms-justify-content: -ms-flex-start;
+				justify-content: flex-start;
+			}
+
+			.main.style2.right {
+				-moz-justify-content: -moz-flex-end;
+				-webkit-justify-content: -webkit-flex-end;
+				-ms-justify-content: -ms-flex-end;
+				justify-content: flex-end;
+			}
+
+			.main.style2.inactive.left > .content {
+				-moz-transform: translateX(-100%);
+				-webkit-transform: translateX(-100%);
+				-ms-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+
+			.main.style2.inactive.right > .content {
+				-moz-transform: translateX(100%);
+				-webkit-transform: translateX(100%);
+				-ms-transform: translateX(100%);
+				transform: translateX(100%);
+			}
+
+		.main.style3 {
+			text-align: center;
+			padding: 6em 0 6em 0;
+		}
+
+			.main.style3 .content > header {
+				margin-bottom: 2em;
+			}
+
+			.main.style3.primary {
+				background: #141414;
+			}
+
+			.main.style3.secondary {
+				background: #141414;
+			}
+
+		.main.dark {
+			color: #ffffff;
+		}
+
+			.main.dark a {
+				color: inherit;
+			}
+
+			.main.dark .button.style2 {
+				border-color: #ffffff;
+			}
+
+				.main.dark .button.style2:hover {
+					background-color: rgba(255, 255, 255, 0.125);
+				}
+
+				.main.dark .button.style2:active {
+					background-color: rgba(255, 255, 255, 0.25);
+				}
+
+				.main.dark .button.style2.down {
+					background-image: url("images/dark-arrow.svg");
+				}
+
+		body.is-touch .main {
+			background-attachment: scroll !important;
+		}
+
+		@media screen and (max-width: 1920px) {
+
+			.main.style2 .content {
+				width: 50%;
+			}
+
+		}
+
+		@media screen and (max-width: 1280px) {
+
+			.main.style2 .content {
+				width: 60%;
+			}
+
+		}
+
+		@media screen and (max-width: 1000px) {
+
+			.main.style2 .content {
+				width: 70%;
+			}
+
+		}
+
+		@media screen and (max-width: 736px) {
+
+			.main > .content br {
+				display: none;
+			}
+
+			.main.fullscreen {
+				height: auto !important;
+			}
+
+			.main.style1 {
+				padding: 4em 15px 4em 15px;
+			}
+
+				.main.style1 h2 {
+					font-size: 3em;
+				}
+
+			.main.style2 {
+				padding: 6em 15px 6em 15px;
+			}
+
+				.main.style2:before, .main.style2:after {
+					display: none !important;
+				}
+
+				.main.style2 .button.anchored {
+					display: none;
+				}
+
+				.main.style2 .content {
+					width: 100%;
+					max-width: 100%;
+					text-align: center;
+					-moz-transform: none;
+					-webkit-transform: none;
+					-ms-transform: none;
+					transform: none;
+				}
+
+			.main.style3 {
+				text-align: center;
+				padding: 3em 10px 3em 10px;
+			}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.main > .content {
+				max-width: calc(100% - 1.5em);
+			}
+
+		}
+
+		/* One */
+
+	#one {
+		background: url("images/overlay.png"), url("https://i.pinimg.com/originals/2c/4b/d8/2c4bd83620ea9b7fca769f5f2df69dfe.jpg");
+		background-size: 256px 256px, cover;
+		/*background-attachment: fixed, fixed;*/
+		background-attachment: scroll;
+		background-position: top left, center center;
+	}
+
+/* Two */
+
+	#two {
+		background: url("images/overlay.png"), url("https://preview.redd.it/0v2os4h0rm251.png?width=640&crop=smart&auto=webp&s=66b6614a3f30b460334cc657482e22479a3ca257");
+		background-size: 256px 256px, cover;
+		background-attachment:scroll;
+		background-position: top left, center center;
+	}
+
+/* Three */
+
+	#three {
+		background: url("images/overlay.png"), url("https://i.pinimg.com/originals/2c/4b/d8/2c4bd83620ea9b7fca769f5f2df69dfe.jpg");
+		background-size: 256px 256px, cover;
+		/*background-attachment: fixed, fixed;*/
+		background-attachment: scroll;
+		background-position: top left, center center;
+	}
+
+
+	
+	</style>	
+	
+</head>
+<body>
+	<div class="pimg1">
+        <div class="container1">
+  			<div class="title">Driver Attentiveness Detection</div>
+  			<div class="subtitle"> Stay Alert, Accidents Hurt. </div>
+		</div>
+  </div>
+  
+  <!-- One -->
+  <section id="one" class="main style2 right dark fullscreen">
+	<div class="content box style2" style="background-color: rgba(125, 125, 125, 0.9);">
+		<header>
+			<h2>Introduction</h2>
+		</header>
+		<p>Staying attentive while driving, free from all distractions is a task itself, pair that up with the comfort of futuristic technology of autonomous driving that is being brought to us and that makes up the perfect recipe for a disaster to occur. <br>
+		Distracted driving reduces the driver’s response time drastically May it be manual or autonomous driving. <br>
+		Distraction and fatigue are visual characteristics that can be observed in their facial features like eyes and mouth. <br>
+		</p>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="main style2 left dark fullscreen">
+	<div class="content box style2" style="background-color: rgba(125, 125, 125, 0.9);">
+		<header>
+			<h2>Problem</h2>
+		</header>
+		<p>Current studies elaborate on how autonomous vehicular crashes seem to indicate complacency which is not typically an element of conventional driving. <br>
+			Autonomous vehicles seem to encourage complacency and ignorance among us drivers who are supposed to serve as the backup for these technologies. <br>
+			In 2020 sleep deprived, fatigued, and distracted drivers made up for about 40% of all road accidents taking place. <br>
+		</p>
+	</div>
+</section>
+
+<!-- Three -->
+<section id="one" class="main style2 right dark fullscreen">
+	<div class="content box style2" style="background-color: rgba(125, 125, 125, 0.9);">
+		<header>
+			<h2>Proposed System</h2>
+		</header>
+		<p>Distraction is shown whenever a driver has reduced alertness which is displayed by gazing for a while, yawning and sluggish facial expressions. <br>
+			We are proposing a Real-time image-based fatigue and attention monitoring system with the objective to decrease the consequences of inattentive driving. <br>
+			A driver support system to be used as a countermeasure is required that intervenes while alerting the driver in the case of inattentive driving especially in autonomous vehicles as well as manual vehicles in order to reduce the risk of accidents and prevent crashes.<br>
+		</p>
+	</div>
+</section>
+
+  <section class="section section-dark">
+    <div class="text-effect">
+		<br><br>
+		<h1 class = "neon text-style">Overview</h1>
+		<br><br>
+		<p class="lead"> 
+			The user or driver can first initialize this system which has a quite easy setup. <br>
+			Once the system starts it focuses on the drivers face and continuously captures live video feed from a camera. <br>
+			It extracts and analyses various eye and mouth features. <br>
+			In case an abnormality is detected in these features of the driver. <br>
+			This means that the driver is inattentive and they are immediately alerted. <br>
+			
+		</p>
+  		<br><br><br> 
+	</div>
+
+				
+				<div class="center">
+					<span><a href="{{ url_for('static', filename='splash.html') }}" class="btn btn-outline-success btn-lg" style = "text-decoration: none;">Let's Start</a></span>
+  				</div>
+				<br><br>
+
+  </section>
+  
+  </div>
+	
+</body>
+</html>
