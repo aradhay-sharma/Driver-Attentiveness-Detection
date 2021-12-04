@@ -1,0 +1,1 @@
+flask, matplot lib, scipy, imutils, opencv-python, playsound, pytz, pandas, 
