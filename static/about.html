@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Driver Attentiveness Detecttion</title>
+        <link rel = "icon" href = "assets/logo.png" type = "image/x-icon"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <style type="text/css">
+
+        body {
+				background-image: linear-gradient(0deg,rgb(19, 29, 41),rgb(37, 95, 110));
+				background-attachment: scroll;
+  				text-align: center;
+  				color: rgb(204, 218, 235);
+			  }
+			  .div-head{
+			  		margin: 50px;
+			  }
+
+        .center{
+					padding-left: 10%;
+					padding-right: 10%;
+					position: center;
+				}
+
+          .card-about {
+            text-align: justify;
+          }
+
+          .card-text {
+            font-family: Helvetica;
+            font-stretch: extra-expanded;
+            font-weight: 700;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="div-head">
+        <h1>About Us</h1>
+          <div class="center">
+          <p class="lead">
+          <br>
+          With the main aim of completing our final year project both of us ended up together in order to build something practical and new when we stumbled upon this concept. <br>
+          Being the first time collaborating with each other and working remotely was a challenge in itself which we seemed to overcome with ease.</p>
+          <br>
+          <hr class="my-4">
+          <br>
+          <p class="lead">For any questions, queries or help needed <br>
+            Hit us up below and let us know! </p>
+            <br><br>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card card-style" style = "background-color: rgb(19, 29, 41)">
+                <div class="card-body" >
+                  <img src="assets/gareth.png">
+                  <br><br>
+                  <p class="card-text">Gareth Sequeira</p>
+                  <p style = "text-align: justify;">Eager to Learn, Grow and Expand my Knowledge while gaining Experience in the real world. Currently pursuing my Masters of Science in Computer Applications with a Specialization in Data Science from Symbiosis, Pune.<br> 
+                    Being Organized, Collaborative and Assimilating new concepts and technologies efficiently are a few of my qualities that helps me adapt according to the requirements. <br>
+                    My interests lie in Development along with working, analysing, and playing with Data.</p>
+                  <div class="template-demo"> <button type="button" class="btn btn-social-icon btn-outline-linkedin" onclick="location.href='https://www.linkedin.com/in/garethsequeira/'"><i class="fa fa-linkedin linkedin-bg"></i></button> <button type="button" class="btn btn-social-icon btn-outline-instagram"><i class="fa fa-instagram insta-bg" onclick="location.href='https://www.instagram.com/garethsequeira/'"></i></button> <button type="button" class="btn btn-social-icon btn-outline-google" onclick="sendEmail1();"><i class="fa fa-google"></i></button><button type="button" class="btn btn-social-icon btn-outline-github" onclick="location.href='https://github.com/garethsequeira'"><i class="fa fa-github github-bg"></i></button></div>
+                </div>
+              </div>
+              <br><br>
+            </div>
+
+
+            <div class="col-sm-6">
+              <div class="card card-style" style = "background-color: rgb(19, 29, 41)">
+                <div class="card-body">
+                  <img src="assets/aradhya.png">
+                  <br><br>
+                  <p class="card-text">Aradhya Sharma</p>
+                  <p style = "text-align: justify;">Overcoming challenges with a data driven approach while using analytical thinking keeps me passionate and committed to learning more about this large spectrum called data science.<br>
+                    After completing my Bachelors of Technology in Computer Science from Lucknow, my interest in Computer and Data Science brought me to Symbiosis, Pune.<br>
+                    Here currently I am pursuing my MSc in Computer Applications with a Data Science Specialization</p>
+                  <div class="template-demo"> <button type="button" class="btn btn-social-icon btn-outline-linkedin " onclick="location.href='https://in.linkedin.com/in/aradhay-sharma-291000202/'"><i class="fa fa-linkedin linkedin-bg"></i></button> <button type="button" class="btn btn-social-icon btn-outline-instagram"><i class="fa fa-instagram insta-bg" onclick="location.href='https://www.instagram.com/ikka______/'"></i></button> <button type="button" class="btn btn-social-icon btn-outline-google" onclick="sendEmail2();"><i class="fa fa-google"></i></button><button type="button" class="btn btn-social-icon btn-outline-github" onclick="location.href='https://github.com/aradhay-sharma'"><i class="fa fa-github github-bg"></i></button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+        <div>
+          <span><a href="splash.html" class="btn btn-outline-success btn-lg" style = "text-decoration: none;">Let's Start</a></span>
+          <br><br><br><br><br>
+        </div>
+    </body>
+</html>
+<script>
+function sendEmail1() 
+{
+    window.location = "mailto:sgg2042031@sicsr.ac.in";
+}
+
+function sendEmail2() 
+{
+    window.location = "mailto:aas2042008@sicsr.ac.in";
+}
+</script>
